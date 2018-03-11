@@ -1,0 +1,12 @@
+<div *ngIf="isReady()">
+  <h3>Analysis result</h3>
+  <p class="lead">Total participants: {{ getTotalNumberOfParticipants() }}</p>
+  <!-- Display stats per competition -->
+  <label for="competitionInput">Select competition</label>
+  <select id="competitionInput" class="form-control" [(ngModel)]="currentCompetition">
+    <option *ngFor="let competition of getCompetitions()" [value]="competition">{{ competition }}</option>
+  </select>
+  <div *ngIf="currentCompetition">
+    <app-compet-stats [competition]="currentCompetition"></app-compet-stats>
+  </div>
+</div>
