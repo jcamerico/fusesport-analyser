@@ -6,28 +6,11 @@
       <ngb-panel *ngFor="let team of participantVisitor.getTeams(competition)"
                  title="{{ team + ' (' + participantVisitor.getTeamMembers(competition, team).length + ' players)'}}">
         <ng-template ngbPanelContent>
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let teamMember of participantVisitor.getTeamMembers(competition, team)">
-                  <th scope="row">{{ teamMember.account }}</th>
-                  <td>{{ teamMember.firstname }}</td>
-                  <td>{{ teamMember.lastname }}</td>
-                  <td>{{ teamMember.role }}</td>
-                  <td>{{ teamMember.email }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <ul>
+          <li *ngFor="let teamMember of participantVisitor.getTeamMembers(competition, team)" [ngClass]="{'team-manager': teamMember.role === 'Team Manager', 'player': teamMember.role !== 'Team Manager'}">
+            {{teamMember.lastname + ', ' + teamMember.firstname + ' (' + teamMember.email + ')'}}
+          </li>
+        </ul>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>

@@ -1,3 +1,11 @@
 .compet-stats {
   margin-top: 15px;
 }
+
+.team-manager {
+  font-weight: bold;
+}
+
+.player {
+  font-weight: normal;
+}
